@@ -1,0 +1,7 @@
+  Date: <%= flight.date  %><br/>
+  Departing Airport: <%= flight.departure_airport.code %><br/>
+  Arrival Airport: <%= flight.arrival_airport.code %><br/>
+  Duration: <%= flight.duration / 60 %> hours 
+  <% if flight.duration % 60 > 0  %> 
+    <%= flight.duration % 60 %> minutes
+  <% end %>

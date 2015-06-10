@@ -1,0 +1,28 @@
+<h1>Fight search</h1>
+
+<div class="flgiht-form">
+  <%= form_tag flights_path, method: :get do %>
+    Date: <%= select_tag(:date, options_for_select(@dates, selected: params[:date])) %><br/>
+    Depart: <%= select_tag(:start, options_for_select(@airports, selected: params[:start])) %>
+    Arrive: <%= select_tag(:finish, options_for_select(@airports, selected: params[:finish])) %><br/>
+    <%= submit_tag "search" %>
+  <% end %>
+
+  <h3>Select a flight:</h3>
+  <%= form_tag new_booking_path, method: :get do %>
+
+    Passengers: <%= select_tag(:passengers, options_for_select((1..4).to_a, selected: params[:passengers]) ) %><br/>
+
+    <% @matching_flights.each do |flight| %>
+      <p>
+        <div class="flight">
+          <%= radio_button_tag :flight, flight.id %> <strong>Flight <%= flight.id %>:</strong><br/> 
+          <%= render partial: 'flight', locals: { flight: flight } %>
+        </div>
+      </p>
+    <% end %>
+
+    <%= submit_tag "Choose flight" %>
+
+  <% end %>
+</div>
