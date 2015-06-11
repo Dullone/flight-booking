@@ -1,0 +1,8 @@
+Thank you for booking a flight with us, <%= @user.name %>
+-----------------------------------------------------
+  Your flight no <%= @flight.id %> from <%= @flight.departure_airport.code %> 
+  to <%= @flight.arrival_airport.code %> will leave on <%= @flight.date %> 
+  and last <%= @flight.duration / 60 %> hours and 
+  <%= @flight.duration % 60 %> minutes.
+
+  Thank you for flight with odin airlines!

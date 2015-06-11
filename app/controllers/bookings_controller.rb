@@ -10,7 +10,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.create(booking_params)
+    if @booking = Booking.create(booking_params)
+      @booking.passengers.each do |passenger|
+        PassengerMailer.flight_booked(passenger, @booking.flight).deliver_later
+      end
+    end
   end
 
   private
